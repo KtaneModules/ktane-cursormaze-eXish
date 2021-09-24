@@ -1,17 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using KModkit;
-using System.Text.RegularExpressions;
-using System;
 
 public class CursorMazeScript : MonoBehaviour {
 
     public KMAudio audio;
-    public KMBombInfo bomb;
     public KMSelectable moduleSelectable;
     public GameObject[] tileColliders;
+    public GameObject fakeButton;
     public Material[] materials;
     private RaycastHit[] allHit;
 
@@ -42,12 +38,13 @@ public class CursorMazeScript : MonoBehaviour {
     }
 
     void Start() {
+        fakeButton.SetActive(false);
         redo:
         isPath = new bool[64];
-        int index = UnityEngine.Random.Range(0, objNames.Length);
+        int index = Random.Range(0, objNames.Length);
         startTile = index;
         isPath[index] = true;
-        int pathMax = UnityEngine.Random.Range(25, 41);
+        int pathMax = Random.Range(25, 41);
         int pathCount = 0;
         while (pathCount != pathMax)
         {
@@ -74,7 +71,7 @@ public class CursorMazeScript : MonoBehaviour {
             }
             if (possibleTiles.Count == 0)
                 goto redo;
-            index = possibleTiles[UnityEngine.Random.Range(0, possibleTiles.Count)];
+            index = possibleTiles[Random.Range(0, possibleTiles.Count)];
             isPath[index] = true;
             pathCount++;
         }
