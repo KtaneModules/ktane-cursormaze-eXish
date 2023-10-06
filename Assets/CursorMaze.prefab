@@ -545,6 +545,7 @@ GameObject:
   - component: {fileID: 4041300201032840}
   - component: {fileID: 114335410585506892}
   - component: {fileID: 114235369766892872}
+  - component: {fileID: 114276419474873802}
   - component: {fileID: 114137747078870040}
   - component: {fileID: 114017367703905494}
   m_Layer: 0
@@ -7023,7 +7024,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audio: {fileID: 114335410585506892}
+  colorblind: {fileID: 114276419474873802}
   moduleSelectable: {fileID: 114137747078870040}
+  cbTextPrefab: {fileID: 1672114775795932, guid: 185f835a1ddd5ab49aa716893ebdd9be,
+    type: 2}
   tileColliders:
   - {fileID: 1282185346196886}
   - {fileID: 1949015940821592}
@@ -7439,6 +7443,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - KT/Mobile/DiffuseTint
+--- !u!114 &114276419474873802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1371807027823920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cfb889a07d5fd4e9baed7960bb397f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorblindMode: 0
 --- !u!114 &114312096689352680
 MonoBehaviour:
   m_ObjectHideFlags: 1

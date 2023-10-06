@@ -7,7 +7,9 @@ using UnityEngine;
 public class CursorMazeScript : MonoBehaviour {
 
     public KMAudio audio;
+    public KMColorblindMode colorblind;
     public KMSelectable moduleSelectable;
+    public GameObject cbTextPrefab;
     public GameObject[] tileColliders;
     public GameObject fakeButton;
     public GameObject tpCursor;
@@ -115,11 +117,17 @@ public class CursorMazeScript : MonoBehaviour {
                 else if (startTile == (i * 8 + j))
                 {
                     tileColliders[i * 8 + j].GetComponent<Renderer>().material = materials[0];
+                    GameObject cbText = Instantiate(cbTextPrefab, tileColliders[i * 8 + j].transform);
+                    if (colorblind.ColorblindModeActive)
+                        cbText.GetComponent<TextMesh>().text = "G";
                     logLine += "G";
                 }
                 else if (endTile == (i * 8 + j))
                 {
                     tileColliders[i * 8 + j].GetComponent<Renderer>().material = materials[1];
+                    GameObject cbText = Instantiate(cbTextPrefab, tileColliders[i * 8 + j].transform);
+                    if (colorblind.ColorblindModeActive)
+                        cbText.GetComponent<TextMesh>().text = "R";
                     logLine += "R";
                 }
                 else
@@ -266,7 +274,7 @@ public class CursorMazeScript : MonoBehaviour {
 
     //twitch plays
     #pragma warning disable 414
-    private readonly string TwitchHelpMessage = @"!{0} move <u/d/l/r> [Moves the cursor in the specified direction] | Moves may be chained, for ex: !{0} move udlr | On Twitch Plays a fake cursor will be placed on the green tile and return to it upon deselecting the module or touching a wall";
+    private readonly string TwitchHelpMessage = @"!{0} move <u/d/l/r> [Moves the cursor in the specified direction] | Moves may be chained, for ex: !{0} move udlr | On Twitch Plays a fake cursor will be placed on the green tile and it will return to the tile upon deselecting the module or touching a wall";
     #pragma warning restore 414
     private bool TwitchPlaysActive;
     IEnumerator ProcessTwitchCommand(string command)
